@@ -1,0 +1,191 @@
+/* Hauptcontainer für den Adventskalender */
+.adventCalendar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Stack title and grid vertically */
+  height: 100vh;
+  background: linear-gradient(to bottom, #a8dff7, #ffffff);
+  position: relative; /* Allows absolute positioning of the title */
+}
+
+.title {
+  position: absolute;
+  top: 5%; /* Adjusts vertical position */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  z-index: 100; /* Ensures it appears above other elements */
+}
+
+/* Rasterlayout für die Boxen */
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 90%; 
+  max-width: 1000px; 
+  padding-bottom: 3rem 3rem; 
+}
+
+/* Einzelne Box im Raster */
+.calendarBox {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+/* Hover-Effekt für Geschenkboxen */
+.calendarBox:hover {
+  transform: scale(1.1); 
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation der Box beim Öffnen */
+.giftBoxAnimation {
+  width: 150px; 
+  height: 150px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* grösse der ungeöffneten Boxen */
+.giftBoxImage {
+  width: 160px; 
+  height: 160px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* grösse der geöffneten Boxen */
+.giftBoxImageOpened {
+  width: 100px; 
+  height: 100px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* Nummerierung der Box */
+.boxNumber {
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  z-index: 10; 
+}
+
+/* Fehler- oder Ladeanzeige */
+.error,
+.loading {
+  font-size: 1.5rem;
+  color: #e74c3c;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Overlay wenn der Brief angezeigt wird */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 999; 
+}
+
+/* Brief Nachricht */
+.letter {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #709286;
+  border: 2px solid #6b8e23;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  z-index: 1000;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Nachrichtentext */
+.letter p {
+  font-size: 1.5rem;
+  color: #ffffff; 
+  font-family: 'Georgia', serif;
+}
+
+/* Button des briefes */
+.closeButton {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: #6b8e23;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.closeButton:hover {
+  background: #556b2f;
+}
+
+/* Einblenden der Nachricht */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+/* Container für den Schneeeffekt */
+.snowfall {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; 
+  overflow: hidden;
+  z-index: 900; 
+}
+
+/* Einzelne Schneeflocke */
+.snowflake {
+  position: absolute;
+  top: -10%;
+  font-size: 1rem;
+  color: white;
+  animation: fall linear infinite;
+}
+
+/* Animation für Schneeflocken */
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}

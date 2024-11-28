@@ -1,0 +1,40 @@
+:root {
+  --background: #003366;
+  --foreground: #ededed;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #a8dff7, #ffffff);
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Styling für die Schneehügel */
+.hills {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40%;
+  background: #ffffff;
+  border-radius: 50% / 20%;
+}
+
+/* Zweite Ebene der Hügel für mehr Tiefe */
+.hills::after {
+  content: '';
+  position: absolute;
+  top: -30px;
+  width: 120%;
+  height: 50%;
+  left: -10%;
+  background: #f0f8ff;
+  border-radius: 50% / 25%;
+}
